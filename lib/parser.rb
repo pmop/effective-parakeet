@@ -12,6 +12,8 @@ class Parser
       parsed = line.split(' ')
 
       raise_parser_error unless parsed.count == 2
+
+      parsed
     end
   end
 
