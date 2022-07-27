@@ -33,5 +33,27 @@ RSpec.describe Parser do
         end
       end
     end
+
+    context 'when passing the usual data' do
+      let(:data) do
+        <<-HEREDOC
+        /help_page/1 126.318.035.038
+        /contact 184.123.665.067
+        /home 184.123.665.067
+        /contact 184.123.665.067
+        HEREDOC
+      end
+
+      it 'returns the correct data' do
+        expect(subject.call).to eq(
+          [
+            ['/help_page/1', '126.318.035.038'],
+            ['/contact',     '184.123.665.067'],
+            ['/home',        '184.123.665.067'],
+            ['/contact',     '184.123.665.067']
+          ]
+        )
+      end
+    end
   end
 end
