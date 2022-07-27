@@ -1,10 +1,15 @@
+# frozen_string_literal: true
+
+# Reads some structured data and turns into a data structure
 class Parser
+  # @param data [String]
   def initialize(data:)
     @data = data
 
     validate_param!(data)
   end
 
+  # @return [Array<Array<String>>] i.e. [['/endpoint', '0.0.0.0']]
   def call
     return [] if data.empty?
 
@@ -28,7 +33,7 @@ class Parser
   end
 
   def raise_parser_error
-    error_msg = 'Failed to parse the data. Expected' +
+    error_msg = 'Failed to parse the data. Expected' \
                 ' line with endpoint and ipv4 separated by space.'
 
     raise Errors::CannotParseError, error_msg

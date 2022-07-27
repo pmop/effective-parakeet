@@ -12,13 +12,40 @@ RSpec.describe CountUniqueViewsStrategy do
       ]
     end
     let(:expected_output) do
-        "/help_page/1 3 unique views\n" \
+        "/home 1 unique views\n" \
         "/contact 2 unique views\n" \
-        "/home 1 unique views\n"
+        "/help_page/1 3 unique views\n"
     end
 
     it 'returns the correct data' do
       expect(subject.call).to eq(expected_output)
+    end
+  end
+
+  context 'when passing no data' do
+    let(:data) do
+      []
+    end
+
+    let(:expected_output) do
+      ''
+    end
+
+    it 'returns the correct data' do
+      expect(subject.call).to eq(expected_output)
+    end
+  end
+
+  context 'when passing unexpected parameters' do
+    let(:data) { nil }
+
+    it 'returns the correct data' do
+      error_msg = 'Unexpected parameter "data" value type.' \
+                  ' "data" is expected to be a "String"'
+
+      expect { subject.call }.to raise_error(
+        ArgumentError, error_msg
+      )
     end
   end
 end

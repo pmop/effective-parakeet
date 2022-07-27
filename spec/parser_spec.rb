@@ -27,9 +27,9 @@ RSpec.describe 'Log parser' do
   context 'when running script with valid file' do
     let(:script_arg) { ' ./spec/fixtures/simple.log' }
     let(:expected_output) do
-        "/help_page/1 3 unique views\n" \
+        "/home 1 unique views\n" \
         "/contact 2 unique views\n" \
-        "/home 1 unique views"
+        "/help_page/1 3 unique views\n"
     end
 
     it 'returns the correct output' do
