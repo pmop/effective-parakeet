@@ -39,6 +39,10 @@ Make sure you're under the project folder.
 ## Tested under Ubuntu
 Should work well under any UNIX.
 
+## For evaluating TDD process
+
+Please, check the commit history.
+
 ## Some explanation
 
 We have some structured (not formally defined but implied) data that is sourced from the local disk file 'webserver.log'.
