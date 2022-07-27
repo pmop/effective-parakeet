@@ -27,11 +27,9 @@ RSpec.describe 'Log parser' do
   context 'when running script with valid file' do
     let(:script_arg) { ' ./spec/fixtures/simple.log' }
     let(:expected_output) do
-        <<-HEREDOC
-        /help_page/1 2 unique views
-        /contact 1 unique views
-        /home 1 unique views
-        HEREDOC
+        "/help_page/1 3 unique views\n" \
+        "/contact 2 unique views\n" \
+        "/home 1 unique views"
     end
 
     it 'returns the correct output' do
