@@ -5,6 +5,10 @@ class Parser
     validate_param!(data)
   end
 
+  def call
+    return [] if data.empty?
+  end
+
   private
 
   attr_reader :data
