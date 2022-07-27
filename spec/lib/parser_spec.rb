@@ -18,5 +18,20 @@ RSpec.describe Parser do
         expect(subject.call).to eq([])
       end
     end
+
+    context 'when data cannot be parsed' do
+      context 'malformed line' do
+        let(:data) { '/help_page/1126.318.035.038' }
+
+        it 'raises the correct error' do
+          error_msg = 'Failed to parse the data. Expected' +
+                      ' line with endpoint and ipv4 separated by space.'
+
+          expect { subject.call }.to raise_error(
+            Errors::CannotParseError, error_msg
+          )
+        end
+      end
+    end
   end
 end
